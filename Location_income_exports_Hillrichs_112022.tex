@@ -1,0 +1,927 @@
+\documentclass[12pt,a4paper,oneside,times]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry,comment}            
+%\usepackage[margin=1in]{geometry}
+%\usepackage{times}    		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper, margin=0.5in}   
+%\draftSpacing{1.5}
+\usepackage{rotfloat}     
+\usepackage[round,authoryear]{natbib}           		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx,color, soul,bm}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+\usepackage{amssymb,amsmath,graphicx,threeparttable}
+\usepackage{booktabs}
+\usepackage{import}
+
+\usepackage{url}
+\renewcommand{\baselinestretch}{1.3}
+\renewcommand{\arraystretch}{0.8}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\newcommand{\sym}[1]{\rlap{#1}} %makes Latex understand significance stars from estout
+\usepackage{longtable} 
+
+\usepackage{float}
+\usepackage[]{psfrag}
+\usepackage[]{ragged2e}
+\usepackage{epstopdf}
+\usepackage{chngcntr}
+%\usepackage[flushleft]{threeparttable} % for table notes
+\usepackage{pdflscape}  %landscape orientation of page
+\usepackage{color, colortbl} %highlight table rows
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{pbox} %for line break inside a cell
+\usepackage{caption} %note below figure
+%\usepackage{subcaption} %subfigures - outdated?
+\usepackage{subfig} %subfigures
+\usepackage{tikz}  %draw graphics
+\usetikzlibrary{calc}
+\usepackage{enumitem}
+\usepackage{dcolumn}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage[normalem]{ulem} % to strike out text, use with sout{}
+%\usepackage{endfloat}
+%\usepackage{cleveref} %for showing table, figure etc in the \cref command, always load last!
+\setlist[enumerate]{label*=\arabic*.}
+%\usepackage[dvipsnames]{xcolor}
+%\theoremstyle{plain}
+\newtheorem{assumption}{Assumption}
+%\theoremstyle{definition}
+\newtheorem{defn}{Definition} 
+
+\renewcommand{\baselinestretch}{1.2}
+\renewcommand{\arraystretch}{1}
+
+%\graphicspath{{"C:/Users/u1267646/Dropbox/Project 3/Texfiles/figures_tables/"}}
+%\graphicspath{{"D:/Dropbox/Dissertation/figures_tables/Essay_3"}}
+%\newcommand{\tablespath}{{"D:/Dropbox/Dissertation"}}
+
+\graphicspath{{"C:/Users/dhill/Dropbox/Dissertation/figures_tables/Essay_3"}}
+\newcommand{\tablespath}{{"C:/Users/dhill/Dropbox/Dissertation"}}
+
+
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\GDP}{GDP}
+\DeclareMathOperator{\GDPpc}{GDPpc}
+\DeclareMathOperator{\MP}{QMP}
+\DeclareMathOperator{\GMP}{Gini-QMP}
+\DeclareMathOperator{\RMP}{Gini ~ adj.~ QMP}
+\DeclareMathOperator{\IM}{IM}
+\DeclareMathOperator{\IMP}{IMP}
+\DeclareMathOperator{\EM}{EM}
+
+\title{Location, per capita income and exports}  %\footnotesize{Preliminary draft -not for citation} }
+
+\thispagestyle{empty}
+\newpage
+\author{Dorothee Hillrichs\thanks{\emph{e-mail:}  dorothee.hillrichs@uclouvain.be }~\thanks{Thanks to Florian Mayneris, Guzm\'{a}n Ourens, Sjak Smulders, Burak Uras and Gonzague Vannoorenberghe for valuable comments. Thanks also to participants of the GSS Seminar Tilburg for valuable comments.} 
+\\ \small{Tilburg University}} %\and someone \\UVT}
+\date{\today}
+
+\begin{document} %doc starts here
+\maketitle  %creates titel date author
+%\tableofcontents\\
+\abstract 
+\noindent 
+This paper investigates the heterogeneous effect of destination per capita income on exports across origin countries in different locations. Using bilateral HS 6-digit trade data, I show that, on average, proximity to rich countries is a catalyst for exports as destination per capita income rises. Yet, the effect is declining over the course of development, turning negative for advanced economies. The results indicate that proximity to rich markets incites expansion in the number and quantity of exported products but attenuates unit values. I contrast proximity to high-income per capita countries with the effect of domestic per capita income of the exporter and find that the two country characteristics work largely in opposite directions. A higher domestic per capita income promotes exports to rich destinations particularly for advanced economies. On average, richer countries export goods of higher unit values as destination income per capita rises at the expense of a lower number and quantity of products exported.  
+
+\section{Introduction}
+
+The type of goods a country produces is intricately linked to its development path. Not only does it change over the course of development, future growth prospects also vary with a country's production structure \citep{Hausmann2007}. Gaining insight in the country characteristics that shape production  furthers the understanding of global differences in development. 
+
+This paper seeks to shed light on the extent to which consumer preferences influence a country's production. The paper advances the hypothesis that not only consumers at home, but also nearby consumers abroad exert influence on a country's production. Since trade is costly, firms close-by can offer lower prices to those customers than firms from more distant countries. The competitive edge resulting from their proximity to consumers raises the stake for firms to meet domestic consumers' as well as nearby foreign consumers' preferences. Understanding the role of foreign consumers' preferences for production is important particularly for developing countries for which  specialization according to domestic demand only may impede economic integration with more advanced economies.
+
+Preferences of potential customers are summarized in a country's ``quality market potential'', which  I define as a  weighted average of per capita income  across all countries. In this measure, each country's per capita income serves as a proxy for its consumers' preferences.\footnote{The recent international trade literature shows that import demand is systematically related to the destination's per capita income \citep{Hallak2006,Hallak2010,Fajgelbaum2011,Markusen2013,Matsuyama2019}. This pattern is rationalized with non-homothetic preference.} The label ``quality  market potential'' alludes to the notion that rich consumers value a product's quality relatively highly. The weights are designed to reflect the opportunity costs in foregone trade revenues due to a mismatch of supplied and demanded product quality. From the perspective of firms in the exporting country, these costs increase in geographic proximity to and the size of a given target market. 
+% Due to the distance weighting, quality market potential increases the closer the exporting country is located to high-income countries. It therefore describes the country's geographic position  vis {\`a} vis high-income countries. It likewise summarizes the income composition of a country's potential consumers.
+
+In the first part of the analysis, I study how a country's ``quality market potential'' (QMP) affects the sensitivity of its exports to the per capita income of trade partners.  A country located closer to high-income countries is expected to produce goods that appeal relatively more to rich consumers and, consequently, to export relatively more to high-income destinations. 
+% Geographic location plays a role in explaining variation in  export unit values across countries\footnote{\cite{Lugovskyy2015,Dingel2017}}, and matters for economic development\footnote{\cite{Breinlich2013,Liu2019}}. 
+% What sets this paper apart from previous research is its focus on the heterogeneous impact of a country's geographic position on  bilateral trade patterns across trade partners of different per capita income. 
+To test my hypothesis empirically, I augment a standard gravity equation. The gravity equation relates bilateral exports to proxies for trade costs such as the bilateral distance between countries and to exporter-product and importer-product specific terms. I add the destination's per capita income interacted with the exporter's QMP to the set of explanatory variables. The coefficient on this interaction term shows how strongly QMP mediates the effect of destination per capita income on exports. The model is estimated using a large panel of bilateral trade data at the HS 6-digit level.
+
+
+The estimation results show that a higher QMP raises the sensitivity of a country's exports to destination income. Countries located in a richer region export disproportionately more to high-income relative to low-income destinations than countries located in poorer regions. To illustrate, if Viet Nam had Poland's quality market potential, Viet Nam would export 11\% more to the US than to Mexico. If Viet Nam's domestic income increased by an equivalent amount Viet Nam's exports would increase by at most 2\% more to the US than to Mexico according to my results. In fact, conditional on the country's QMP, the effect of the exporter's income per capita is insignificant in several specifications.\footnote{I use the estimate on QMP, 0.06, of Table \ref{t: gravity plus Linder}, column 5. For the quantification of the effect of per capita income, I use the estimate 0.01 of column 1 in Table \ref{t: gravity main}. This is the largest coefficient I find for per capita income. The difference in Viet Nam and Poland's quality market potential in log terms equals 1.03 in 2015, and the difference in log income per capita between USA and Mexico equals 1.82 in the same year. $0.06*1.03*1.82= 11 \%$ and  $0.01*1.03*1.82 = 2\%$.} 
+
+Recent studies point to quality upgrading as the driving force behind the positive effect of QMP on trade flows to rich countries \citep{Lugovskyy2015,Dingel2017,Bastos2010,Bastos2018,Eaton2019}. These papers study \emph{either} the average effect of proximity to rich countries on export unit values, \emph{or} the average effect of per capita income on unit values of imports. This paper instead studies how these two factors \emph{interact}. This chapter also takes a broader perspective of these previous studies. Not only quality may be a driver behind the positive effect of QMP across heterogeneous destinations. A higher potential to sell to rich consumers may also incite an expansion in the number and quantity of products sold. This in turn would have a negative on unit values via mark-ups. 
+ 
+
+
+
+In theory, quality market potential and export patterns are reinforcing each other. The consumer preferences in the largest markets for a country's goods influence the type of goods produced. At the same time, the size of a market for an exporter depends on the match of the type of goods produced with the preferences of consumers in the market. To address the circularity inherent in quality market potential and sales to high-income countries, I allow for an adjustment period between a change in the quality market potential and the realization of higher exports to richer destinations. 
+
+In addition, I accommodate  the indirect effect of quality market potential on trade. An exporter's quality market potential is highly correlated with its domestic per capita income. I control for this indirect effect by adding an interaction term of the exporter's with the importer's income per capita. Adding this second interaction term also reveals the relative importance of foreign to domestic consumers' preferences in directing trade flows across heterogeneous destinations. 
+ 
+%The analysis is executed using bilateral trade data at the HS 6-digit product level. My data\footnote{Main source is CEPII. See section \ref{s: Data description} for details.} is uniquely suited to answer the question at hand. It covers a large number of exporters and importers which is crucial to study interaction effects between exporter and importer characteristics. The HS 6-digit codification is the finest product classification of trade flows. %This distinguishes this paper from its antecedents that study the differential impact of destination per capita on trade across source countries at the industry level \citep{Hallak2010,Fieler2011,Caron2014,Fajgelbaum2016}.
+
+The subsequent analyses  examine the when and the how of the relative importance of QMP and per capita income on trade patterns further. First, the strength of either effect may vary over the course of the \emph{exporter's} economic development.  I estimate specific effects for ``high-income'', ``upper middle-income'' and ``low-income'' (including ``lower middle income'') countries according to the World Bank's definition of country groups.  While the impact of QMP on trade patterns falls with economic development, the effect of domestic per capita income rises. Less developed countries appear to be more outward oriented in their production. Over the course of development, domestic per capita income gains in importance for trade patterns. 
+
+Second, at the industry level (HS 2), both foreign and domestic consumers' preferences have a significant, positive impact on the income elasticity of exports. The discrepancy between product- and industry-level results points to variation at the trade margins, which is the subject of the final analysis of this paper. 
+
+%With a second set of analyses, I examine in which way quality market potential raises exports to high-income countries disproportionately. A growing literature debates the growth implications of trade success along the different trade margins \citep{Besedes2011}, and so understanding the channels through which quality market potential affects bilateral trade flows provides essential input for policy making. In addition, documenting empirical patterns at the margins of trade in a unified analysis  keeping regression model and sample constant is informative for the design of trade models.  
+
+Decomposing the bilateral trade flows into an extensive product margin and an intensive margin as in \cite{Hummels2005} sheds light on \emph{how} quality market potential affects exports. The intensive margin is further decomposed into a unit value and an implied quantity margin. I re-estimate the gravity equation from part 1 of the analysis, replacing trade values with each of the margins as dependent variable.  A growing literature debates the growth implications of trade success along the different trade margins \citep{Besedes2011}, and so understanding the channels through which quality market potential affects bilateral trade flows provides essential input for policy making. 
+
+Quality market potential and per capita income interact with destination per capita income through different channels. Conditional on per capita income, a higher QMP expands sales at the extensive and quantity margin of trade as destination income per capita rises. Yet, unit values fall with proximity to high-per capita income countries. This is consistent with the increase at the extensive and quantity margin putting downward pressure on mark-ups. Conversely, conditional on their QMP, richer exporters export relatively \emph{fewer} products of \emph{higher} unit values as destination income per capita increases. I provide suggestive evidence that the positive effect on unit values is due to a higher quality of exports. The negative effect of per capita income on the extensive margin exactly offsets the positive effect on the intensive margin. 
+
+
+
+This paper contributes to the growing literature on the interaction of exporter characteristics with destination per capita income determining bilateral trade flows. Among other factors, recent research points to an exporter's domestic income \citep{Hallak2006}, an exporter's skill endowment \citep{Caron2014}, and an exporter's comparative advantage in production technologies of differentiated goods \citep{Fieler2011} driving a country's destination income elasticity of exports. Motivated by the economic geography literature\footnote{Notably, \cite{Fujita1999,Davis2003,Behrens2009}. These papers study a country's geographic position as a determinant of trade flows in the context of homothetic preferences.}, I add an exporter's proximity to high-per capita income markets to the list. What distinguishes this paper from the previously cited literature is in addition the level of trade flow aggregation. Whereas these previous studies investigate the impact of per capita income, for example, on sector-level trade flows, I move the analysis to the 6-digit classification of goods. 
+
+
+The paper adds as well to the large literature on the margins of trade. In the context of income-driven trade flows, the unit value margin garnered the most attention. The analysis of unit values links previous findings from studies on the average unit value variation across importers (see \cite{Hummels2004,Choi2009,Hummels2009,Bastos2010,Bastos2018}) with the literature on unit value variation across exporters. The analysis of the unit value margin in the context of the quantity and extensive margins also helps the interpretation of unit values as reflecting quality or mark-ups, and is informative for theoretical modeling (see also \cite{Baldwin2011} on the latter point).
+
+Closely related to mine is the study on export unit values by \cite{Lugovskyy2015} that also centers around a country's average proximity to high-income markets as a determinant of unit values (see \cite{Dingel2017} on the geographic location of US cities). Unlike Lugovskyy's and Skiba's, my data set allows me to study the variation of unit values across exporters \emph{and} importers such that I can uncover heterogeneous effects of the exporter's QMP on prices across destinations.\footnote{Their data set features only six Latin America destinations: Argentina, Brazil, Chile, Colombia, Ecuador, Peru and Uruguay. It therefore does not admit studying the heterogeneous impact across destinations, which is the focus of the present paper.} 
+ 
+%%%%%%%%%%%%
+
+Finally, this paper also relates well to a recent quantitative study of the margins of trade by \cite{Eaton2019}. \cite{Eaton2019} develop a general equilibrium model that allows trade flows to vary at the extensive and intensive margins (quantity and price). The model captures the positive association of per capita income of exporters and importers with unit values. They, too, use the decomposition methodology introduced by \cite{Hummels2005}. However, neither the interaction of exporter and importer income per capita nor third-countries' per capita income play a role in their model.
+%
+%With the aim to inform trade theory, \cite{Baldwin2011} examine empirical patterns at the extensive margin and the unit value margin, however on separate data sets. They define the extensive margin in terms of countries rather than products, as I do, and consider the remoteness of the importer rather than the geographic location of the exporter. The advantage of the decomposition approach I follow is that it can trace the total trade effect to the margins in a more controlled way by keeping the sample stable and re-estimating the same model.
+
+%\cite{Imbs2003} and \cite{Cadot2011} show that product diversification evolves in a  U-shape manner  as an economy's per capita income grows. My findings suggest that export variety and export quality are related through a country's quality market potential. 
+
+The next section argues for the relevance of an exporter's quality market potential for trade based on a detailed discussion of the international trade literature. Section \ref{s: Empirical specific} specifies the empirical analyses. Section \ref{s: MA and exports} describes the data and presents the first set of results on the trade effect of quality market potential. Section \ref{s: results decomp} then explains the decomposition exercise and presents the results of the heterogeneous effect of quality market across destinations on the different trade margins.  Section \ref{s: conclusion} concludes.
+
+\section{Conceptual background}\label{s: Literature sec}
+
+
+\hl{Maybe: move to conceptual background? If c.b. introduces non-homothetic gravity.}
+\paragraph{Non-homothetic gravity}
+The basis of the analysis is a standard gravity equation augmented with destination per capita income:
+\begin{align}\label{eq:estimating equation theta}
+\ln(X_{jodt})
+&= F_{jot}+ F_{jdt} + \gamma_{1}\ln(\tau_{od})+\theta_{ot}\ln(y_{dt}) + \varepsilon_{odjt} 
+%\\ \text{ for } t &=\{1,t-1,t-5\} \nonumber .
+\end{align} 
+ $X_{odjt}$ denote trade flows in product $j$ from origin $o$ to destination $d$ at time $t$. $\tau_{od}$ are bilateral trade costs, empirically measured by bilateral distance and dummies for whether or not the two countries share a border, a language, a colonial past, or are members of the same regional trade agreement. $F_{jot}$ and  $F_{jdt}$ are fixed effects capturing exporter-product specifics such as factor endowments and size, and importer-product specifics such as the degree of competition in product $j$ in country $d$.  Finally, ${y}_{dt}$ is the per capita income in country $d$.  Per capita income enters with a coefficient specific to an exporter, and the coefficient is allowed to vary over time. 
+ 
+Theoretically, such an ``augmented'' gravity equation can be rationalized with non-homothetic preferences driving demand, and goods being differentiated by their origin. The coefficient $\theta_{ot}$ characterizes the type of goods exported by exporter $o$. A $\theta_{ot} \neq \theta_{o^\prime t}$ implies that country $o$'s exported goods differ from country $o^\prime$'s exported goods in their appeal to high-income consumers. 
+
+\sout{The next subsection introduces the key variable of interest in this paper, quality market potential.} The empirical strategy is specified thereafter.  
+
+
+\paragraph{Why quality market potential matters for trade}
+In this section, I sketch how quality market potential may interact with destination per capita income to determine trade outcomes. The presumption is that, on the demand side, per capita income reflects consumer preferences and shifts import demand across differentiated varieties. Varieties are differentiated by origin country. Building on the international trade literature, I argue that the product differentiation across origin countries is a result of a country's QMP capturing the composition of consumer preferences. % Consumer preferences direct production to overcome  
+
+
+%\hl{move up to 1.1 and cancel last sentence, or to 1.0 and also connect to explaining empirical strategy}
+
+
+First, a country's quality market potential may affect the country's exports if firms have an incentive to match nearby consumers' preferences.  \cite{Fajgelbaum2011} provide a theoretical framework that links demand to production and exports when preferences are non-homothetic.\footnote{Section VII. of their paper shows this link in a  many-countries-model.}
+%leading high-income countries to specialize in products appealing to high-income consumers.
+ In their model, products differ in terms of quality, and richer consumers have a higher willingness to pay for quality under non-homothetic preferences. 
+ %Similar to the economic geography literature\footnote{\cite{Krugman1980,Davis2003,Hanson2004,Behrens2009,Costinot2019}},
+ A stronger domestic demand for high-quality goods in high-income countries supports a larger number of high-quality producers due to economies of scale. When trade costs are low, economies of scale and a strong domestic demand for quality incentivize specialization in quality across the per capita income levels of countries and therefore trade patterns. 
+
+The crucial assumption for the specialization patterns in the model by \cite{Fajgelbaum2011} is that trade costs are uniform across countries. In that case, it is the free access to \emph{domestic} consumers that gives an edge to a country in producing quality that matches the \emph{domestic} consumers' preferences. Third countries are reached from any country at equal costs and so there is no role for a country's geographic position vis {\`a} vis potential export markets.
+
+Empirically trade costs are not uniform across countries, giving rise to a role for geography \citep{Davis2003,Matsuyama2017}. In a general equilibrium model with  homothetic preferences, increasing returns to scale in production and non-uniform trade costs, \cite{Behrens2009} show that the geographic centrality of a country can break the link between domestic demand and production. A key, though standard, ingredient in  the model by \cite{Behrens2009} is that firms are constrained to make zero \emph{total} profits, aggregating across all markets they serve, and that fixed costs are uniform across destinations. This forges a link between the preferences of consumers in any two destination markets and along with non-uniform trade costs gives rise to the role of the average proximity to high-income countries for trade patterns.  I apply this notion to a context of preferences that are \emph{non-}homothetic. The only difference is that, when preferences are non-homothetic, proximity to countries of high average rather than high aggregate income matters. 
+
+
+
+
+%Unless domestic per capita income differs systematically from foreign per capita income in its effect on the output structure, introducing quality market potential in a Linder regression \`{a} la \cite{Hallak2006} should leave no effect for the interaction of exporter and importer domestic per capita income terms. 
+
+%It remains an open question to which extent a country can capitalize on the proximity to high-income markets by increasing exports disproportionately to high-income countries. This paper seeks to find an empirical answer in the first part of the analysis.
+  
+Second, a country's quality market potential might indirectly affect the country's exports by raising the country's per capita income. \cite{Redding2004} document a positive link of wages and geographic location in the context of homothetic preferences and \cite{Liu2019} confirm their findings in the context of non-homothetic preferences.
+%that workers command higher wages in countries of higher market potential. \cite{Redding2004} derive the market potential term from a Constant Elasticity of Substitution (CES) utility function and therefore do not account for non-homothetic preferences. \cite{Liu2019} derive a market potential term from an Almost Ideal Demand System. This demand system represents non-homothetic preferences. Also \cite{Liu2019} find a positive effect of proximity to rich markets on wages. 
+The effect on domestic income makes market potential change the domestic preferences for the quality of products. Thus, production and export structure are altered indirectly. This intuition is developed formally in \cite{Breinlich2013}.\footnote{The intuition is also briefly touched upon in the conclusion of \cite{Matsuyama2019}.} Whereas \cite{Breinlich2013} investigate sectoral labor shares as outcome variables, I am interested in less aggregated production patterns and therefore revert to trade statistics. 
+
+ 
+Third, a higher quality market potential may affect the country's exports by lowering adjustment costs to serving any given high-income market. Different levels of per capita income may call for adjustment of certain product attributes like, for example, quality. A rich exporter and one located close to - and hence frequently interacting with - rich countries will have a strong incentive to design a product to meet rich consumers' preferences. These incentives are weaker for firms in a poor country or one located far from rich countries.  %(external economies of scale argument). 
+ \cite{Morales2019} show for a sample of Chilean chemical exporters that exports increase towards destinations sharing some characteristics with previous destinations. \cite{Morales2019} argue that selling to similar destinations lowers adjustment costs due to demand similarity of those destinations. While the authors do not find an effect of similarity in per capita income alone, it is conceivable that per capita income matters more for consumption goods rather than chemicals. 
+
+The empirical methodology of this paper is not designed to disentangle different mechanisms put forward in this section, but rather to document and analyze novel empirical patterns that are consistent with either of the explanations. The identifying assumption that quality market potential affects a country's production structure is underlying to all three mechanisms. 
+
+\paragraph{How quality market potential affects aggregate trade}
+Quality market potential may alter export patterns through any of the margins constituting trade values. Consider the volume of trade, or quantity margin, first. In models with economies of scale in the tradition of \cite{Krugman1980}, variation in export flows across countries comes about due to variation in the number of homogeneous firms breaking even. Suppose fixed costs of production vary by product type but are otherwise uniform.
+A firm located in a country with high quality market potential (QMP) is assumed to make larger profits in rich countries compared to firms located in a country with low QMP due to the match in preferences in the rich country with the supplied product type. The larger profits invite entry in exporting the rich consumers' preferred type of a good. A larger number of firms exporting homogeneous or horizontally differentiated goods raises the aggregate quantity exported to rich countries from a high-QMP country.  
+
+The effect of quality market potential on the extensive margin is ambiguous. When fixed costs differ not only within products by type but also across products, a high QMP may raise the number of products for which firms break-even when selling to high-income per capita countries. Thus, quality market potential may positively affect the extensive product margin of trade. Conversely, a high QMP may also reduce the extensive margin of trade as it implies proximity to foreign competitors \citep{Behrens2009} to which firms may react with concentrating their exports on their ``best-performing'' products \citep{Mayer2014}. 
+
+
+Finally, relatively higher exports from high-QMP to high-income per capita countries may stem from higher unit values. Unit values reflect average production costs, but also mark-ups and are frequently interpreted as reflecting the quality of traded goods \citep{Hallak2006,Lugovskyy2015,Eaton2019}. If quality market potential affects - as suggested by the label - the quality of exports, I expect a positive interaction of the exporter's QMP and destination per capita income. The implicit assumption is that richer consumers have a higher willingness to pay for quality, and countries in the proximity of rich countries have a strong incentive to produce high-quality goods. 
+
+If unit values capture production costs, I expect a negative effect of quality market potential. If proximity to high-income markets lowers adjustment costs of tailoring products to the preferences of rich consumers, average export prices should fall with quality market potential.
+
+If unit values reflect mark-ups instead, I also expect a negative effect of the interaction between quality market potential and destination income per capita. If countries located closer to high-income countries host larger numbers of firms producing highly income-elastic goods, quality market potential not only reflects the proximity to consumers but also raises the number of competitors. The ``crowding'' effect of quality market potential puts downward pressure on mark-ups and thereby would lower unit values.\footnote{\cite{Hummels2009} generalize a model of ``ideal variety'' in which households have Lancaster preferences and firms operate under monopolistic competition. Entry crowds the product space, lowering mark-ups and requiring firms to produce larger quantities to meet the zero profit condition. Consumers of higher income have a stronger willingness to pay for varieties closer to their ideal which cushions the downward pressure on prices in richer countries. They consider only importer characteristics (size and per capita income) in their price regression but no exporter characteristics or interactions of the two.} 
+
+%\hl{backing further by literature needed?}
+
+%\subsection{Further contributions to the literature}
+%The paper also adds to the research on the margins of/unit values of exports in the context of non-homothetic preferences. Closely related to the present paper are the contributions by \cite{Dingel2017} and \cite{Lugovskyy2015}. \cite{Dingel2017} analyzes the quality of intra-US product flows and finds that proximity to rich consumers raises the average quality of exported goods. \cite{Lugovskyy2015} study the link between market potential and quality in import data of seven Latin American countries. The authors highlight two opposing effects of proximity to high-income consumers on quality: while strong demand for quality raises the quality of goods (the Linder effect), low trade costs lower the quality (the Alchian-Allen effect). \hl{sentence moved up}\sout{ On a more aggregate level, }\cite{Breinlich2013} \sout{show that proximity to large markets (in terms of GDP) shifts production from agriculture to manufacturing through the effect of market access on wages in combination with non-homothetic preferences (in the home country).} Also, \cite{Atkin2017} \sout{find that market access to a high-income country raises the quality of Egyptian rug producers' output through learning about quality valuation abroad.} \hl{make this point sharper: }This paper adds to the literature by studying the interaction of an exporter's quality market potential with destination income per capita in determining the quality of bilateral exports.   
+
+%The quality of exports varies with both exporter as well as importer characteristics and is typically proxied by unit values. \cite{FeenstraRomalis2014} and \cite{Dingel2017} show that richer exporters ship higher quality goods, consistent with the home market theory in \cite{Fajgelbaum2011}.  %is there a role for market potential in these studies?
+%Trade liberalization positively affects quality as well thanks to easier access to higher quality inputs \citep{Faber2014,Caron2017,Fieler2018}. \footnote{Other determinants of export quality include factor endowment. (Heckscher-Ohlin model) as well as bilateral distance (Alchian-Allen).}. 
+
+
+
+
+\section{Data}
+\subsection{Key variables}
+\paragraph{Trade data}
+This study makes extensive use of data provided by Centre d'Etudes Prospective et d'Informations Internationales (CEPII). I obtain data on bilateral product-level trade flows collected in the \emph{BACI} database and data on unit values contained in their \emph{Trade Unit Values (TUV)} data set. To calculate unit values, CEPII obtains data from the tariff lines database of the United Nations Statistical Division, which are the values and quantities of trade declared by individual countries to the UN. Unit values are calculated at the finest level of classification available per country and then aggregated to the HS 6-digit level for cross-country comparison. Both data sets are freely available. 
+
+I observe yearly, bilateral trade flows between 2000 and 2015 at the 6-digit product level of the Harmonized System. The HS 6-digit codification is the finest product classification level for which cross-country panel data exists. I keep only the years 2005-2015 in the regression sample. Thereby the sample for the five-year lag model starts in the same year as the samples for the other two lag specifications. 
+
+For the decomposition of trade flows into the three margins it is important to keep the sample constant across regression models. Therefore I retain only those exporter-importer-HS6-year observations that appear in the \emph{BACI} as well as in the \emph{TUV} data. 
+
+At such fine a level of product classification as the HS 6-digit, zeros are pervasive in trade data. To limit the incidence of zero trade flows, I impose a number of restrictions on the data. The analysis is restricted to intermediate and consumption goods according to the UNCTAD definition. These product groups exhibit the largest scope for differentiation, so cross-country heterogeneity in import demand due to differences in per capita income is most relevant for trade in these product groups. %\footnote{\hl{Also do intermediate goods.}}.
+I exclude countries with a population of less than 1 million inhabitants as well as  the smallest countries in terms of area from the sample\footnote{The internal distance constraint is binding for the following countries with more than on 1 million inhabitants: Hong Kong, Mauritius, Singapore.}. 
+%When defining quality market potential inclusive of the exporter's own per capita income, domestic income is abnormally high weighted for small countries like Macao, Singapore or Hong Kong. While the average weight of domestic per capita income is 0.14, for Macao the domestic weight is as high as 0.92, for Singapore 0.75, and for Bahrain, Mauritius, Hong Kong and Comoros slightly above 0.6. If the domestic income enters with weights as high as these, the coefficients in equations \eqref{eq:estimating equation robust} and \eqref{eq:estimating equation exp income} are not well identified. 
+For each HS6-category and year, I keep the 40 largest exporters in terms of value of exports to the world.  Keeping the largest 40 exporters corresponds to keeping roughly the largest 75\% of the size distribution, though this threshold varies slightly across years. Further, I require that each country exports to and imports from at least 10 countries per HS6 good and year. With all restrictions put in place, the main estimation sample still contains just above 12 million observations. These correspond to 106 exporters, 146 importers trading in 2274 HS6 products.
+
+
+\paragraph{Trade cost proxies data}
+The time-invariant trade cost proxies are obtained from the \emph{Geo} database also made available by CEPII. Information on regional trade agreement participation comes from \emph{Mario Larch's Regional Trade Agreements Database} \citep{Egger2008}. 
+
+\paragraph{Destination characteristics}
+Average income is measured by real GDP per capita, available in the \emph{World Development Indicators} of the World Bank. I obtain Gini data for a robustness exercise from the \emph{World Income Inequality Database}. This database is a collection of Gini data from primary sources. I choose the Gini index defined in terms of income inequality (as opposed to consumption inequality) and keep only sources rated as ``high'' or ``average'' quality.
+
+\paragraph{Quality market potential}
+To summarize foreign consumers' preferences, I develop and formalize the term ``quality market potential'' in this subsection. This statistic describes the incentives for firms from a given exporter country $o$ to tailor their output according to differential preferences in potential destination markets.
+
+Suppose all firms in a country are homogeneous and sell to one country only. Suppose further, as in equation \eqref{eq:estimating equation theta}, import demand is governed by the match between the preferences of a country's consumers, signalled by the country's per capita income, and the origin-specific product attributes summarized in $\theta_{ot}$ (I omit the time subscript in the following). When firms in country $o$ sell to one country only, their profit-maximizing choice of $\theta$ should reflect the preferences in the single destination country, say market $m$. Denote that choice as $\theta_m^\star$. 
+
+If firms from country $o$ were to sell to two countries, $m$ and $M$, but had to decide on one set of product attributes, they would have to balance the gains from meeting preferences prevalent in country  $m$ perfectly against the loss of deviating from preferences in the second market $M$. The solution is some convex combination $\tilde{\theta}_{o}$ of $\theta_m^\star$ and $\theta_M^\star$, the $\theta$s that would be chosen could each firm tailor the product exactly to the liking of consumers in $m$ and $M$, respectively: 
+\begin{equation}\label{eq: QMP simple}
+\tilde{\theta}_{o} = \omega_{om}\theta^\star_m + (1-\omega_{om})\theta^\star_M.  
+\end{equation}
+
+Intuitively, the weight attached to market $m$ should increase in the opportunity cost to sellers from $o$ of deviating from the ideal $\theta_m^\star$. Those opportunity costs are the foregone sales to market $m$. Since the weighting is a function of the loss from mis-alignment of supply and demand for product attributes, which itself is a function of the choice of $\tilde{\theta}_{o}$, no explicit solution exists. Conditional on the destination's per capita income and the deviation of  $\tilde{\theta}_{o}$ from $\theta_m^\star$, the opportunity costs fall with the homothetic component of the gravity equation. That is, opportunity costs fall with rising trade costs to and competition in a market. 
+
+The sum in equation \eqref{eq: QMP simple} describes the logic behind what I call a country's ``quality market potential'', namely, the preference composition of  potential consumers of differentiated goods produced in country $o$. Firms have an incentive to provide a single type of a good to several markets if there are economies of scale to designing a product or if it is prohibitively costly to tailor products to single markets. If firms had an incentive and the ability to match the product attributes perfectly to the preferences in each market, importer income per capita would affect exports from different origins equally and we could not differentiate products by their origin.  
+In practice, observed bilateral trade flows are a mix of exports from firms that do and do not tailor their products  to the preferences of consumers in different markets. 
+
+
+To measure a country's quality market potential empirically, I extend the sum in \eqref{eq: QMP simple} to include all countries globally and assume a linear mapping between a country's per capita income and its preferred output characteristics, $$\theta_m^\star = \beta y_m.$$ 
+
+
+I model the weights as bilateral trade costs $\tau^\gamma_{om}$ scaled by a destination-sector and year parameter $\varphi_{jmt}$ which takes up market characteristics such as productivity of and trade costs for competing firms from other exporter countries. I normalize the product $\tau^\gamma_{om} \varphi_{jmt}$ such that the weights sum up to one:
+\begin{equation}
+\omega_{omt} = \frac{\tau^\gamma_{om} \varphi_{jmt}}{\sum_{m^\prime}\sum_j{\tau^\gamma_{om^\prime}\varphi_{jm^\prime t}}}.
+\end{equation}
+
+I parameterize trade costs $\tau$ as in the baseline regression as a linear function of (log) bilateral distance, and dummies for common membership in regional trade agreement, a shared language, borders, and colonial past. I obtain estimates for $\gamma$ and $\varphi_{jmt}$ from estimating equation \eqref{eq:estimating equation theta}.\footnote{Whereas the main analysis makes use of bilateral trade data at the HS 6-digit level, I estimate the auxiliary regression using HS 2-digit trade data. %The two-step estimation requires to adjust standard errors in line with \cite{Murphy1985} or to apply bootstrap estimation for correct inference.
+}   
+
+Formally, a country's ``quality market potential'' is measured by
+\begin{equation}\label{eq: QMP definition}
+\MP_{ot} = \beta \sum_m \sum_j \frac{\tau^{\hat{\gamma}}_{om} \hat{\varphi}_{jmt}}{\sum_{m^\prime}\sum_j {\tau^{\hat{\gamma}}_{om^\prime}\hat{\varphi}_{jm^\prime t}}} y_{mt}
+\end{equation}
+for $m=1,...M, m\neq o$ and where a $~\hat{}~$ denotes the estimate of a parameter. 
+
+To assess this statistic, I compare it with alternatives from the literature and conduct a robustness exercise employing a more reduced form alternative. Table \ref{t: corr FQMP lit} in the appendix presents correlation coefficients for quality market potential constructed here with two alternatives from the literature as well as two reduced form alternatives. I find quality market potential as defined in \eqref{eq: QMP definition} to be positively and significantly correlated with all four alternatives.\footnote{I obtain \citeauthor{Lugovskyy2015}'s $MQC$ from their replication material and construct the corresponding country-level version of market potential in \cite{Dingel2017}, p.1562. Other papers with related multilateral demand terms include \cite{Breinlich2013} and \cite{Liu2019}. Neither of these two papers analyses trade outcomes, however.}
+
+
+A similar term, labelled ``Multilateral Quality Compensation'' ($MQC$), plays a central role in \cite{Lugovskyy2015}. The authors develop a formal model of optimum quality choice by single- and multi-quality producing firms and show that multilateral demand composition matters for the optimal quality choice when firms cannot produce a unique quality level for each market.  The $MQC$ is a ratio of trade-weighted sums of preferences for quality and transportation costs from the exporter country to a given destination market. 
+
+The multilateral demand term in \cite{Lugovskyy2015} differs to the one in \eqref{eq: QMP definition} in that \citeauthor{Lugovskyy2015} assume a $\log$-linear relation between preferences and per capita income in a country. Based on an auxiliary gravity equation, they construct weights from those factors that drive bilateral trade but are unrelated to quality, similar to the present paper. In the regression, they choose however to capture market conditions with the target market's GDP rather than with a fixed effect. The second term, the weighted sum of transportation costs, is present in my quality market term, too, due to the normalization of the weights. Albeit, while \cite{Lugovskyy2015} weight transportation costs with distance and GDP, I weight distance with the destination fixed effect only. 
+
+Another closely related term appears in the analysis of unit values of trade flows across US cities in \cite{Dingel2017}, labeled ``market potential''. \citeauthor{Dingel2017} models market potential in reduced form as the weighted average of log per capita income in destination markets. He constructs weights as the product of population in the destination city and the inverse bilateral distance (the weights are normalized to sum to 1). Note that the choice of representing preferences of consumers with $\log$ per capita income is important here. Weighting per capita income in levels with population would cancel and the term would collapse to a distance-weighted average of GDP. 
+
+Inspired by \cite{Dingel2017}, I construct a reduced form quality market potential for a robustness exercise. I replace $\hat{\gamma}$ in equation  \eqref{eq: QMP definition} with $-1$ and $\hat{\varphi}_{jm}$ with the country's GDP.\footnote{Note that this reduced form approach does not require to adjust standard errors.} Another alternative is to only weight GDP per capita by bilateral distance similar to early studies on the role of geography for trade \citep{Davis2003}.
+
+ 
+
+
+\subsection{Data description}
+Table \ref{t: sumstats} provides an overview of the key variables in the data.
+
+\begin{table}[htbp]\centering
+\subimport{\tablespath/figures_tables/Essay_3/}{data_sumstats_h6.tex}
+\end{table} 
+
+Table \ref{t: corr FQMP} presents raw correlation coefficients for quality market potential with four key exporter characteristics: aggregate income, per capita income, average income per capita of as well as average distance to trade partners. Quality market potential is positively correlated with the domestic per capita income and size of the exporter. The strong correlation with per capita income motivates adding domestic per capita income as a control variable in the regression. The average distance to trade partners falls with higher quality market potential, whereas the average trade partner's per capita income rises with quality market potential. Interestingly, domestic per capita income is negatively correlated with the per capita income of trade partners.  
+
+
+\begin{table}[htbp]\centering
+\subimport{\tablespath/figures_tables/Essay_3/}{correlation_QMP_variables_h2.tex}
+\end{table}
+
+Figure \ref{f: boxplots FQMP } shows the within-year variation of quality market potential across countries. In spite of it being a global average, quality market potential exhibits variation within years across exporters. This variation is important for the identification of the influence of foreign consumers' preferences on a country's exports patterns, as reflected by the income elasticity of exports. 
+
+\begin{figure}[htbp]%
+    \centering
+\caption{Variation in quality market potential by year}%
+    \label{f: boxplots FQMP }%
+    \includegraphics[scale=0.75]{boxplot_lFQMP_h2} %
+\caption*{\pbox{0.7\textwidth}{\footnotesize{\emph{Notes:} Quality market potential defined in equation \eqref{eq: QMP definition} in logarithms. The boxes cover the range between the 25th and 75th percentile of the distribution, with the horizontal line indicating the median value. The thin lines add 1.5 times the inter-quartile range.}}}   
+\end{figure}
+
+
+The estimation makes use of the time variation of a quality market potential per exporter. Figure \ref{f: hist growth rates FQMP} presents the distribution of the 5-year growth rates of quality market potential across countries.  Over a five-year time horizon, the per capita income composition of potential trade partners changes substantially in my sample. There is noteworthy variation across countries, and growth maybe positive as well as negative. 
+
+%\begin{table}[htbp]\centering
+%\caption{5-year growth rates of quality market potential\label{t: growth rates FQMP}}
+%\subimport{\tablespath/figures_tables/Essay_3/}{growth_rates_sumstats_h2.tex}
+%\end{table}
+
+\begin{figure}[H]%
+    \centering
+\caption{Time variation in quality market potential}%
+    \label{f: hist growth rates FQMP}%
+    \includegraphics[scale=0.75]{g5_FQMP_distribution_h2} %
+\caption*{\pbox{0.7\textwidth}{\footnotesize{\emph{Notes:} Quality market potential defined in equation \eqref{eq: QMP definition} in logarithms.} }}   
+\end{figure}
+
+The two graphs in Figure \ref{f: theta GDPpc and FQMP } plot the average $\theta_{ot}$-estimates per exporter from the auxiliary regression \eqref{eq:estimating equation theta} against average per capita income and quality market potential, respectively.  The correlation is positive in both cases. The fitted line for average GDP per capita in Panel (a) has slope 0.01, and the fitted line for quality market potential in Panel (b) has slope of 0.13. The cross-country variation in quality market potential is notably smaller than the variation in per capita income, yet permits inference. The following section turns to a more rigorous analysis of these patterns.  
+
+
+\begin{figure}[H]%
+    \centering
+\caption{Income elasticity correlation with exporter characteristics}%
+    \label{f: theta GDPpc and FQMP }%
+    \subfloat[GDP per capita]{{\includegraphics[scale=0.75]{yearav_XGDPpc_theta_h2} }}%
+    \quad \\
+    \subfloat[QMP]{{\includegraphics[scale=0.75]{yearav_QMP_theta_h2} }}%
+\caption*{\pbox{0.7\textwidth}{\footnotesize{\emph{Notes:} Income elasticity estimate of equation \eqref{eq:estimating equation theta} using HS 2-digit trade data. Quality market potential defined in equation \eqref{eq: QMP definition}. Averages over years 2000 - 2015.} }}   
+\end{figure}
+
+
+%Figure \ref{f: QMP and trade} illustrates the data patterns that are the subject of this study.  The four panels show the relation between average industry exports and importer per capita income for four countries in the year 2015. Two of the countries are in the bottom quartile of the distribution of quality market potential (Ukraine and Viet Nam), the other two countries come from the top quartile of the distribution (Czech Republic and Mexico).  The dots mark residual trade flow values after partialing out all standard gravity determinants (trade cost proxies and fixed effects) as well as controlling for the interaction of exporter and importer per capita income (residual trade values according to equation \eqref{eq:estimating equation robust} with $\beta_1=0$).
+
+%The plots illustrate that even after controlling for the exporter's domestic per capita income, there is unexplained variation in trade flows associated with destination per capita income and varying by exporter.  Notably, while the correlation between residual trade flows and destination per capita income is zero (or slightly negative) for Ukraine and Viet Nam, it is positive for Czech Republic and Mexico. 
+%\begin{figure}[H]%
+%    \centering
+%\caption{}%
+%    \subfloat[Ukraine]{{\includegraphics[scale=0.5]{QMP_UKR_and_trade_h2} }}%
+%  \qquad
+%   \subfloat[Viet Nam]{{\includegraphics[scale=0.5]{QMP_VNM_and_trade_h2} }}% 
+%   \\
+%   \subfloat[Czech Republic]{{\includegraphics[scale=0.5]{QMP_CZE_and_trade_h2} }}%
+%  \qquad
+%   \subfloat[Mexico]{{\includegraphics[scale=0.5]{QMP_MEX_and_trade_h2} }}% 
+%    \label{f: QMP and trade}%
+%\caption*{\pbox{0.9\textwidth}{\footnotesize{\emph{Notes:} The four graphs plot the average (residual) trade values across HS 2 industries against importer income per capita for Ukraine, Viet Nam, Czech Republic, and Mexico. Data for the year 2015. Find the detailed description in the text.  Ukraine and Viet Nam have a quality market potential in the bottom quartile of the distribution while Czech Republic and Mexico have a quality market potential in the top quartile of the distribution. }}}   
+%\end{figure}
+
+
+\section{Empirical specification}\label{s: Empirical specific}
+
+%Non-homothetic gravity. Moved to CONCEPTUAL BACKGROUND
+
+%\subsection{Quality market potential} 
+% TEXT MOVED TO DATA SECTION
+
+  
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Model}
+My hypothesis is that the exporter's income elasticity in equation \eqref{eq:estimating equation theta}, $\theta_{ot}$, depends positively on the country's quality market potential.
+%I define quality market potential as follows 
+%\begin{defn}
+%The quality market potential of an exporter $o$ is the weighted average of per capita income across all countries indexed by $d = 1,...,o...,N$, where weights reflect the trade costs between country $o$ and country $d$. 
+%\end{defn}
+% Formally, 
+%\begin{equation}\label{eq: market potential}
+%\MP_{ot} = \sum_{d=1}^N \omega_{od}\GDPpc_{dt} \ \ \ \ \ \text{where } \ \ \omega_{od} =\frac{\dist_{od}^{-1} }{\sum_{d=1}^N \dist_{od}^{-1} }  \ \ \ \text{and } \ \ \sum_{d=1}^N\omega_{od} = 1. 
+%\end{equation}
+%I define quality market potential in terms of per capita income rather than GDP since it is per capita income that drives consumption and market shares when preferences are non-homothetic. %\footnote{\hl{Some way to correct for inequality in the destination?}}.
+%Inverse bilateral distance proxies for trade costs to reach the consumers\footnote{See for example \cite{Davis2003} for a symmetric definition of market potential in the context of homothetic preferences).}.
+%Countries closer to the exporter $o$ get a higher weight. The weights are normalized to sum to one. Note that the sum as formulated above includes the exporting country itself as well. 
+To test my hypothesis, I impose the following structure on the income elasticity $\theta_{ot}$:
+\[\theta_{ot} =  \beta\ln(\MP_{os}) \ \ \ \  \text{ where } \ \  s \in \{1,t-1,t-5\} .\]
+In theory, market potential and market access are mutually reinforcing. What firms produce determines where they sell how much (market access) and where they sell how much feeds into the decision what to produce (market potential). Because this circularity cannot explicitly be accounted for in the construction of quality market potential, I assume that quality market potential affects the income elasticity with a time lag. This can be interpreted as the time it takes to adjust production to the differential preferences of potential consumers. Quality market potential becomes ``market access'', i.e. realized exports, only once the production has adjusted to the preferences.  
+
+The assumption of an adjustment period rules out an immediate feedback effect from selling to countries of a given per capita income to a country's output characteristics and in turn to export patterns. I experiment with three different adjustment periods: one year ($t-1$), five years ($t-5$) and keeping quality market potential constant at the initial year in the sample ($s=1$). 
+
+The baseline regression equation is then
+\begin{align}\label{eq:estimating equation main}
+\ln(X_{jodt})
+&= F_{jot}+ F_{jdt} + \gamma_{2}\ln(\tau_{od})+ \beta\ln(\MP_{os})\ln(y_{dt}) + \nu_{1,odjt} \\
+\text{ for } s &\in \{1,t-1,t-5\} \nonumber. 
+\end{align}
+The parameter $\beta$ has two roles. First, it reflects the differential preferences of consumers with different income levels. Second, $\beta$ shows how sensitive the income elasticity is to  quality market potential. It reveals whether exporters transform their market \emph{potential} into market \emph{access}, i.e. sales to high-income consumers.  
+
+%%%%%%%%%%%%%%%%%%%%%%%
+Quality market potential might also indirectly affect an economy's output and trade patterns through its effect on wages as discussed in section \ref{s: Literature sec}. %The correlations in Table \ref{t: corr FQMP} showed that $\MP$ is strongly positively correlated with the exporter's per capita income. 
+In that case, omitting the exporter's per capita income induces a bias away from zero on the coefficient. I separately control for contemporaneous per capita income of the exporter in the main regression to control for this indirect effect.  I model $\theta_{ot}$ in reduced form as
+\begin{align}\label{eq: theta ass}
+\theta_{ot}
+=  \beta_1\ln(\MP_{os}) + \beta_2\ln(y_{ot}) \\ \text{ where } s \in \{1,t-1,t-5\} \nonumber .
+\end{align}
+%where $ e_{2,ot}$ are unobserved factors determining $\theta_{ot}$. % and $s=1$ the first year in the sample, in this paper the year 1995.
+The main estimating equation becomes
+\begin{align}\label{eq:estimating equation robust}
+\ln(X_{jodt})
+&= F_{jot}+ F_{jdt} + \gamma_{2}\ln(\tau_{od}) \nonumber \\ &+ \beta_1\ln(\MP_{os})\ln(y_{dt}) + \beta_2\ln(y_{ot})\ln(y_{dt}) + \nu_{2,odjt} \\
+\text{ for } s &\in\{t-1,t-5,1\}  \nonumber .
+\end{align}
+%The interaction effects $\beta_1$ and $\beta_2$ are identified by the variation in the quality market potential of the source countries per importer-product-year, and by the variation in importer income per origin-product-year in both specifications.
+
+Controlling for contemporaneous per capita income serves a second objective, aside from avoiding an omitted variable bias. The coefficient $\beta_2$ reveals the impact of domestic per capita income on trade. In line with the assumption on preferences made to define quality market potential, domestic per capita income represent domestic consumer's preferences. Comparing $\beta_1$ and $\beta_2$ therefore indicates the relative importance of domestic and foreign consumers' preferences for bilateral trade patterns.  
+
+\section{Export patterns}\label{s: MA and exports}
+This section reports the first set of results. \sout{I start by introducing the data used for the analysis.} I then present  results on the effect of quality market potential on bilateral trade. I show the results for the three different time structures imposed on the income elasticity in the baseline regressions and focus on the five-year lag model for the robustness exercises.
+%Additionally, I re-run each model with a redefined quality market potential that includes foreign countries' per capita income only. I refer to this redefined statistic as the exporter's \emph{foreign} quality market potential.
+
+%\subsection{Data} \label{s: Data description}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\section{Results}\label{s: Results}
+\subsection{Estimation results}
+This section presents the regression results of estimating the augmented gravity equations \eqref{eq:estimating equation main} and \eqref{eq:estimating equation robust}. 
+Throughout, standard errors are clustered by importer-exporter-HS 2-digit industry allowing for arbitrary correlations of demand shocks over years and HS6 products within industries. While the fixed effects account for destination specifics by industry that are common to all exporters, the clustering accommodates preferences of the importer for products from a given exporter. To benchmark the estimates, I re-run regression \eqref{eq:estimating equation robust}  shutting down the effect of quality market potential, $\beta_1=0$, and keeping only the interaction term of exporter and importer per capita income. 
+
+Table \ref{t: gravity main} presents the baseline results of estimating equation \eqref{eq:estimating equation main} and the benchmark regression. Column 1 reports the result of the benchmark regression\footnote{Only the coefficients of interest are reported. The full table of results is available on request.}. Columns 2 through 4 report the estimate of the income elasticity of trade as a function of exporter's quality market potential. Each column corresponds to a different adjustment period of the exporter's industrial structure to a changed income composition of potential customers. I find that a country's quality market potential affects exports to high-income countries disproportionately. The baseline regressions show: a one percent higher quality market potential raises exports to richer countries in the following year about four times as much as a one percent higher domestic per capita income, namely by 0.05 percentage points compared to 0.012 points. Higher lags  increase the effect of quality market potential.
+
+Table \ref{t: gravity plus Linder} presents the results of estimating the main specification, equation \eqref{eq:estimating equation robust}. Recall that with this regression I test how a country's quality market potential affects bilateral trade patterns conditional on the effect of its domestic per capita income on the income elasticity of exports.  The sensitivity of the income elasticity to the exporter's quality market potential is only marginally lowered when controlling for the exporter's domestic per capita income. However, controlling for both exporter's GDP per capita as well as its quality market potential renders the coefficient on per capita income of the source country insignificant, at conventional levels, in the one- and five-year lag specifications. Only in the model specification fixing quality market potential at its initial level (the year 2005), the exporter's per capita income has a significant impact on the destination income elasticity. 
+
+One might worry that the lagged quality market potential just reflects lagged per capita income. Therefore, I replace the contemporaneous with a lagged exporter income per capita in equation \eqref{eq:estimating equation robust}. Columns (4) through (6) in Table \ref{t: gravity plus Linder} report the results. The patterns resemble those presented in the first three columns of Table \ref{t: gravity plus Linder} in magnitude, sign and significance. I use this specification for all of the following, additional analyses. 
+
+%\begin{landscape}
+\begin{table}[htbp]\centering
+\caption{Gravity equation estimation results - Baseline \label{t: gravity main}}
+\subimport{\tablespath/figures_tables/Essay_3/}{FQMP_tradeflows_main.tex}
+\end{table}
+%\end{landscape}
+
+%\begin{landscape}
+\begin{table}[htbp]\centering
+\caption{Gravity equation estimation results - Main regressions \label{t: gravity plus Linder}}
+\subimport{\tablespath/figures_tables/Essay_3/}{FQMP_tradeflows_plusLinder.tex}
+\end{table}
+%\end{landscape}
+
+\subparagraph{Robustness}
+The results are robust to various alterations in the estimation and in the model specification. First, I consider the structure of the correlation of shocks to trade relationships. In the main regression, I cluster standard errors by country-pair and HS 2-digit industry. This admits correlation within pairs across products and years but not across pairs. However, the intuition for the mechanism proposed in this paper is that third countries matter for bilateral trade flows. I cluster standard errors by country-pair-HS 2 industry and year to admit shocks to be correlated within years across country-pairs and goods, too. An even less restrictive way is to cluster standard errors only by exporter and importer (separately), which allows correlation of shocks across countries (destinations and sources, respectively). Next, I cluster by exporter-industry and importer-industry as well as only by country pair. 
+
+As the estimates and t-statistics reported in Table \ref{t: gravity cluster} in the appendix show, clustering standard errors by industry matters for the significance of the effect of quality market potential on trade patterns. The (lack of) significance of per capita income for trade patterns persists. 
+
+A second concern is the specification of quality market potential itself. I vary the construction of quality market potential in three ways. Table \ref{t: gravity robust} in the appendix reports the results. First, I include the exporter's own per capita income in calculating its quality market potential. This leaves the coefficients of the main regression virtually unchanged. 
+
+Second, I replace quality market potential with a reduced form alternative that uses a country's GDP and the inverse bilateral distance to the exporter as weights. This reduced form quality market potential increases the coefficient by an order of magnitude compared to the main regression in the one- and five-year lag models. It also raises the coefficient more than 3 times in the specification with fixed quality market potential.  In this exercise, higher domestic per capita income is even predicted to disproportionately \emph{lower} exports towards rich countries.\footnote{The coefficients remain highly significant. This can point to the bias in standard errors in the two-step estimation being not too severe.} 
+
+Finally, quality market potential might be mis-measured without adjusting per capita income for income inequality in the respective target markets. The incentives to tailor products in a certain fashion might be hampered if nearby markets host consumers of very different income levels. To address this concern, I re-calculate the exporting countries' quality market potential using predicted values from a regression of per capita income on the Gini index. Note that in this robustness exercise the countries that enter the calculation of quality market potential include mostly European and American markets due to the limited availability of comparable Gini data. The results are presented in the last two columns of Table \ref{t: gravity robust}. The inequality-adjusted quality market potential is associated with a disproportionate effect on exports to high-income countries. The estimates are comparable in magnitude, and the sign and significance of the estimates in the main model are preserved (compare columns 7 and 8 of Table \ref{t: gravity robust}). 
+
+\section{Heterogeneity analysis}
+\subparagraph{Quality market potential over stages of development}
+In the main analysis, the relevance of domestic and foreign consumers' preferences on a country's production is assumed constant across all levels of development. However, how important consumers' preferences are for production may depend on the exporter's own level of development. For example, \cite{Lugovskyy2015} show that a country's geographic location affects average unit values particularly of exports from non-OECD countries. I therefore allow the coefficients $\beta_1$ and $\beta_2$ of equation \eqref{eq:estimating equation robust} to vary by development level of the exporter. I group countries according to the World Bank's classification of high-income, upper middle-income, and lower-middle/low-income countries. 
+
+Table \ref{t: gravity heter} reports the results. First, both the domestic per capita income as well as the income composition of foreign consumers have a significant and sizable effect on relative trade flows to rich compared to poor destinations. Interestingly, the direction of the effect differs across development levels. Emerging and developing economies see a stronger increase of exports as destination income rises when located close to high-income countries. Developed economies located close to rich countries, in contrast, see exports fall with destination income. These patterns are qualitatively similar for any lag structure imposed.\footnote{There are two exceptions. For upper-middle income countries, the sign of the coefficient on the per capita income interactions switches from positive to negative from 1-year lag to 5-year lag structure. Also, the significance of QMP switches from insignificant, at conventional levels, to highly significant from 1-year lag to 5-year lag structure.}
+
+The effect of per capita income on trade flows exhibits the reverse pattern. Within the group of high-income countries, rich  countries tend to export relatively more to rich  destinations. In contrast, among emerging or developing countries, a higher domestic per capita is associated with falling export as destination income per capita rises.
+
+The non-linear relation between QMP and exports across development levels highlights the two aspects embodied in quality market potential. For emerging and developing countries, the incentives set by foreign consumers' preferences help to turn market potential into market access to high-income countries. Lacking a domestic consumer base, these countries appear to be more foreign oriented in designing differentiated goods that appeal to high-income consumers. For developed economies, proximity to high-income countries has a negative impact as it implies not only proximity to consumers but also to competitors.
+
+%\begin{landscape}
+\begin{table}[htbp]\centering
+\caption{Gravity equation estimation results - Income groups \label{t: gravity heter}}
+\subimport{\tablespath/figures_tables/Essay_3/}{FQMP_tradeflows_exp_heter_nice.tex}
+\end{table}
+%\end{landscape}
+
+\subparagraph{Industry-level analysis}
+
+Previous research uncovering a link between the exporter's and importer's per capita income has typically drawn on industry level data for the analysis \citep{Hallak2006,Fieler2011,Caron2014,Fajgelbaum2016}. To make my results more comparable to these studies, I re-estimate the main regressions on data at the HS 2-digit level.\footnote{I impose the restrictions of the main, HS 6-digit sample on the HS 2-digit sample such that  all country-pairs are present in both samples and there are no additional countries included in the HS 2-digit sample.} 
+
+Table \ref{t: gravity plus Linder HS2} reports the results. At the industry level, both an exporter's per capita income and its quality market potential foster exports to high-income per capita destinations. For any time lag specification, a ten percent increase in per capita income raises trade flows by about 0.3-0.4 percentage points as destination per capita income raises. In the preferred model, controlling for the exporter's lagged per capita income, a ten percent higher quality market potential raises future exports to rich countries by 0.4 to 0.8 percentage points more than to poor countries.
+
+The results presented in Table \ref{t: gravity plus Linder HS2} indicate that foreign consumers' preferences do not reduce the importance of domestic consumers' preferences for production as one could conclude from Table \ref{t: gravity plus Linder}. Rather, they show that the two exporter characteristics operate at different levels of a country's production structure. The discrepancy between the product-level and industry-level results further indicates variation at the trade margins. I turn next to analyzing these.   
+
+\begin{table}[htbp]\centering
+\caption{Gravity equation estimation results - HS 2-digit regressions \label{t: gravity plus Linder HS2}}
+\subimport{\tablespath/figures_tables/Essay_3/}{FQMP_tradeflows_plusLinder_hs2.tex}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ROBUSTNESS RESULTS %%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Mechanism: Trade margins}\label{s: results decomp}
+
+In this section, I analyze by which trade margins heterogeneous exporters expand sales as destination income per capita changes. I build on the decomposition method introduced by \cite{Hummels2005} and re-estimate the main regression for each trade margin. 
+
+\subparagraph{Decomposition}
+%I examine the contribution of changes in the product quality and product variety of exports to the overall effect of quality market potential on exports to high-income relative to low-income countries.  
+
+\cite{Hummels2005} introduce a tractable method to decompose bilateral trade flows into an intensive and an extensive margin. Let $X_{odjt}$ be the imports of destination $d$ from source $o$ of product $j$ in year $t$ and $X_{djt}$ country $d$'s world imports. An exporter's share in a country's total imports is given by
+\begin{equation}
+\frac{X_{odjt}}{X_{djt}} = \frac{ X_{odjt}}{\sum_{h \in J_{Wdt}} x_{Wdht}} = \IM_{odjt} \times \EM_{odjt},
+\end{equation}
+where $j,h$ indexes products. $J_{odt}$ is the set of products that are exported to destination $d$ in year $t$ by source country $o$ and $J_{Wdt}$ is the full set of products imported by destination $d$.
+
+The extensive margin ($\EM$) is defined as
+\begin{equation}\label{eq: def EM}
+\EM_{odjt}  \equiv \frac{\sum_{h \in J_{odt}} x_{Wdht}}{\sum_{h \in J_{Wdt}} x_{Wdht}},
+\end{equation}
+and is a weighted count of the number of goods $h$ exported to $d$ from $o$. The weights reflect the importance of a good in destination $d$'s total imports. 
+
+The intensive margin ($\IM$) is defined as
+\begin{equation}\label{eq: def IM}
+\IM_{odjt}  \equiv \frac{ X_{odjt}}{\sum_{h \in J_{odt}} x_{Wdht}}.
+\end{equation}
+
+Then 
+\begin{equation}\label{eq: simple IM decomp}
+\ln(X_{odjt}) =  \ln(\IM_{odjt}) + \ln(\EM_{odjt}) + \ln(X_{djt}).
+\end{equation}
+
+Decomposing the intensive margin further allows to quantify the contribution of the average price to the overall effect of quality market potential on trade patterns. The intensive margin consists of a unit value and a quantity component since
+\begin{equation}
+ X_{odjt} =  \frac{X_{odjt}}{Q_{odjt}} Q_{odjt}.
+\end{equation} 
+The term $\frac{X_{odjt}}{Q_{odjt}}$ equals the unit value of exports for product $j$. Instead of calculating unit values at the HS 6-digit level directly, I make use of CEPII's \emph{TUV} data base for this analysis. For this data base, unit values are calculated at an even finer product classification level (tariff line level) and are then harmonized to the 6-digit level to facilitate cross-country analyses. Thus, my observations are weighted average unit values across products within an HS 6-digit category. The unit value margin becomes
+\begin{equation}\label{eq: def IM decomp}
+ \IMP_{odjt}  \equiv \underbrace{\left(\sum_{l \in L_{odjt}} \omega^l_{odjt}\frac{x^l_{odjt}}{q^l_{odjt}} \right)}_{\text{av. unit value}} /\sum_{h \in J_{odt}} x_{Wdht}
+% \underbrace{ \left( \sum_{l^\prime \in L_{odjt}}\frac{1} {\sum_{l \in L_{odjt}} \omega^l_{odjt}\frac{x^l_{odjt}}{q^l_{odjt}}} x^{l^\prime}_{odjt} \right)}_{\text{implied quantity}}.
+\end{equation}
+where $l$ indexes a product (tariff line) observed by CEPII,  the weights $\omega^l_{odjt}$ are set by CEPII and account for, for example, the differences in number of products per HS 6-code across countries. The remainder of the intensive margin is attributed to quantity. 
+
+%When analyzing unit values it is important to bear in mind they reflect several factors affecting prices. A country may sell at higher unit values if production costs are higher in the country. Similarly, products from a given country may sell at higher unit values if the country produces higher quality. Also, variation in mark-ups due to differences in competition feed into unit values. I will return to this point in the discussion of the estimation results.
+
+I exploit the linearity of the panel fixed effects estimator to quantify the contribution of each margin to the overall effect of quality market potential on trade with high-income countries relative to low-income countries. The linearity of the fixed effects estimator implies that the coefficients of regressing components of the dependent variable on the explanatory variables add up to the coefficient of the main regression. I estimate the model in \eqref{eq:estimating equation robust}, replacing the log trade flows  with the expressions based on \eqref{eq: def EM}, \eqref{eq: def IM} and \eqref{eq: def IM decomp} on the left hand side.   
+%
+%\begin{align}\label{eq:estimating equation components}
+%Z_{odjt}
+%&= F^Z_{jot}+ F^Z_{jdt} + \gamma^{Z}_{2}\ln(\tau_{od})+ \beta^{Z}_1\ln(\MP_{os})\ln(y_{dt}) + \beta^{Z}_2\ln(y_{ot})\ln(y_{dt}) + \nu_{Z,odjt} \\
+%\text{ for } s &\in \{t-1,t-5,1\} \nonumber,
+%\end{align}
+%where $Z_{odjt} \in \{\ln(\EM_{odjt}), \ln(\IM_{odjt}),\ln(\IMP_{odjt})\}$. The linearity of the fixed effects estimator implies that $\sum_z \delta^Z =\delta$ for any parameter $\delta$ in the main regression \eqref{eq:estimating equation main} and $\delta^Z$ any parameter in the components regression \eqref{eq:estimating equation components}.
+
+\subparagraph{Decomposition results} 
+
+Table \ref{t: decomp}, Panels A to C summarize the results of the decomposition exercise for the three time structures imposed on the income elasticity. 
+%Each row contains the result of a different specification of the income elasticity.The first row presents the benchmark case of the income elasticity as a function of domestic per capita income only ($\beta^{Z}_1=0$). Rows 2 to 4 present the estimates of $\beta^{Z}_1$. 
+The columns correspond to the different dependent variables. Column 1 repeats the estimates from the augmented gravity equation, reported first in Table \ref{t: gravity plus Linder}. Column 2 reports the results for the extensive margin  regression, and  column 3 reports the results for the intensive margin regression. Column 4 finally reports the effect of QMP and per capita income on the export unit values across destinations. 
+
+My results indicate that foreign and domestic consumer preferences affect trade patterns in very different ways. Quality market potential predominantly affects export flows through the quantity margin of trade. The extensive margin and the unit value margin show significant reaction only after five-years.\footnote{\cite{Baier2014} investigate the dynamics of trade margins and also find that the extensive margin changes later than the intensive margin.} The extensive margin of trade increases, whereas unit values fall when a country is located closer to richer markets for a given  level of competition in the target market. 
+
+The effect of per capita income on trade patterns mirrors the effect of quality market potential. While richer exporters sell fewer goods  the richer the destination, they sell goods of higher unit values. The decomposition explains the null effect of the exporter's per capita income on overall trade flows to rich relative to poor destinations. The extensive and intensive margin effect cancel each other out. On the intensive margin, the dominant force is the unit value margin. Because the coefficient in the unit value regression exceeds the coefficient on exporter per capita income in the intensive margin regression, one can infer that the quantity of traded goods falls with importer per capita income. 
+
+Taken together, the results point to richer countries selling higher quality goods to rich than to poor countries at the expense of the volume of exports and number of products exported. Conditional on the domestic per capita income,  the interaction effects of the exporter's quality market potential with the destination's per capita income would be consistent with foreign consumers' preferences giving an incentive to enter production of goods that appeal to high-income consumers (positive effect on extensive and quantity margin), and this entry putting downward pressure on mark-ups (negative effect on unit values).
+
+%\footnote{\cite{Hummels2009} generalize a model of ``ideal variety'' in which households have Lancaster preferences and firms operate under monopolistic competition. Entry crowds the product space, lowering mark-ups and requiring firms to produce larger quantities to meet the zero profit condition. Consumers of higher income have a stronger willingness to pay for varieties closer to their ideal which cushions the downward pressure on prices in richer countries. They consider only importer characteristics (size and per capita income) in their price regression but no exporter characteristics or interactions of the two.}
+
+Table \ref{t: qladder regs} lends some support for this interpretation. To gain further insight as to whether unit values reflect quality or mark-ups, I re-estimate the unit value regression by HS-6 code. I then regress the estimated coefficients on quality market potential and on per capita income on the quality ladder length of the product \citep{Khandelwal2010}. Quality ladders indicate the scope for vertical product differentiation within an HS 6-digit code. The sensitivity of unit values to the interaction of exporter and importer per capita income increases significantly with quality ladder length. Conversely, the unit value sensitivity to the interaction of quality market potential with destination income per capita does not vary with quality ladder length.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%\begin{landscape} 
+%%\begin{table}[htbp]\centering
+%%\caption{Decomposition results\label{t:decomp L1 MP}}
+%%\scalebox{0.9}
+%%{
+%%\subimport{\tablespath/figures_tables/Essay_3/}{MP_tradeflows_decomp_pcy_controlled}
+%%}
+%%\end{table}
+%%\end{landscape}
+
+%\begin{landscape}
+\begin{table}[htbp]\centering
+\caption{Decomposition - Estimation results \label{t: decomp}}
+\subimport{\tablespath/figures_tables/Essay_3/}{decomposition_nice.tex}
+\end{table}
+%\end{landscape}
+
+%%\begin{landscape}
+%\begin{table}[htbp]\centering
+%\caption{Decomposition L1 \label{t: decomp L1}}
+%\subimport{\tablespath/figures_tables/Essay_3/}{MP_tradeflows_decomp_L1.tex}
+%\end{table}
+%%\end{landscape}
+%
+%%\begin{landscape}
+%\begin{table}[htbp]\centering
+%\caption{Decomposition L5\label{t: decomp L5}}
+%\subimport{\tablespath/figures_tables/Essay_3/}{MP_tradeflows_decomp_L5.tex}
+%\end{table}
+%%\end{landscape}
+%
+%%\begin{landscape}
+%\begin{table}[htbp]\centering
+%\caption{Decomposition init\label{t: decomp init}}
+%\subimport{\tablespath/figures_tables/Essay_3/}{MP_tradeflows_decomp_init.tex}
+%\end{table}
+%%\end{landscape}
+
+
+\begin{table}[htbp]\centering 
+\caption{Unit value effects by product - Quality ladder length regressions}\label{t: qladder regs}
+\subimport{\tablespath/figures_tables/Essay_3/}{uvmargin_products_regs_ladder_p2.tex}
+\end{table}
+
+
+%\begin{landscape} 
+%\begin{table}[htbp]\centering
+%\caption{decomposition - One year lag Market Potential \label{t:decomp L1 MP}}
+%\scalebox{0.9}
+%{
+%\subimport{\tablespath/figures_tables/Essay_3/}{tradeflows_decomp_XGDPpc}
+%}
+%\end{table}
+%\end{landscape}
+
+%\begin{landscape} 
+%\begin{table}[htbp]\centering
+%\caption{decomposition - One year lag Market Potential \label{t:decomp L1 MP}}
+%\scalebox{0.9}
+%{
+%\subimport{\tablespath/figures_tables/Essay_3/}{MP_tradeflows_decompL1_DW03}
+%}
+%\end{table}
+%\end{landscape}
+
+%
+%\begin{landscape} 
+%\begin{table}[htbp]\centering
+%\caption{decomposition - 5-year lag Market Potential \label{t:decomp L5 MP}}
+%\scalebox{0.9}
+%{
+%\subimport{\tablespath/figures_tables/Essay_3/}{MP_tradeflows_decompL5_DW03}
+%}
+%\end{table}
+%\end{landscape}
+%
+%\begin{landscape} 
+%\begin{table}[htbp]\centering
+%\caption{decomposition - Initial Market Potential \label{t:decomp initial MP}}
+%\scalebox{0.9}
+%{
+%\subimport{\tablespath/figures_tables/Essay_3/}{MP_tradeflows_decomp95_DW03}
+%}
+%\end{table}
+%\end{landscape}
+
+%\section{Additional results}\label{s: additional results}
+%In the preceding analyses, the sensitivity of the income elasticity to quality market potential was assumed to be constant across countries and across products. In this section, I relax each of these constraints to explore underlying heterogeneity across industries and countries.
+%
+%\subparagraph*{Heterogeneity across countries} First, I  allow the effect of quality market potential to vary across exporters by reformulating the baseline regression. The marginal effect of quality market potential on the income elasticity now depends on the exporter's income group. Denote with $G_o$ an indicator variable of the exporter's income group. Then  
+%\begin{align}\label{eq:estimating equation exp income}
+%\ln(X_{jodt})
+%&= F_{jot}+ F_{jdt} + \gamma_{3}\ln(\tau_{od})+ \beta_3G_{ot}\ln(\MP_{os})\ln(y_{dt}) + \beta_4G_{ot}\ln(y_{dt}) + \nu_{4,odjt} \\
+%\text{ for } s &=\{t-1,t-5,1\} \nonumber .
+%\end{align}
+%This specification examines the role of domestic income in a country's ability to benefit from a high quality market potential. On the one hand, countries can ``substitute'' domestic demand with foreign demand in driving the production towards growth-promoting goods (manufacturing, high quality). On the other hand, countries might need a certain starting level of income with a given production structure in place, supported by the domestic market, to produce goods that reach markets of higher income. It is a priori not clear for which country income group the effect will be highest and whether there are differences in the effect in a monotone or non-monotone manner. 
+%
+%Figure \ref{f: QMP across groups} shows the marginal effect of quality market potential by income group estimated according to equation \eqref{eq:estimating equation exp income}. Tables \ref{t: Reg by  group incl} and \ref{t: Reg by group excl} report the full estimation results. Overall high-income countries export disproportionately more compared to low-income countries when destination income rises. However, the marginal effect of quality market potential varies across income groups. Low-income countries (LIC) benefit the most from proximity to high-income markets. The marginal effect of quality market potential is somewhat lower for the other three income groups. The effect is  even close to zero or  negative for lower-middle-income (LMI) countries. Note, though, that LIC countries have the lowest level of exports to rich countries (see table  \ref{t: Reg by  group incl}). It is important to take this heterogeneity across exporting countries into account when designing policies. %Promoting regional growth is more effective in the least developed countries if export promotion to high-income markets is the goal.
+%
+%
+%\begin{figure}[H]%
+%    \centering
+%\caption{The trade effect of quality market potential across income groups}%
+%%    \subfloat[QMP incl. $y_{ot}$, 1-year lag]{{\includegraphics[scale=0.5]{estimates_Incomegroups_model_4_h2} }}%
+%%    \quad
+%%    \subfloat[QMP excl. $y_{ot}$, 1-year lag]{{\includegraphics[scale=0.5]{estimates_Incomegroups_model_1_h2} }}%
+%%    \qquad
+%%    \\
+%        \subfloat[QMP incl. $y_{ot}$, 5-year lag]{{\includegraphics[scale=0.5]{estimates_Incomegroups_model_5_h2} }}%
+%    \quad
+%    \subfloat[QMP excl. $y_{ot}$, 5-year lag]{{\includegraphics[scale=0.5]{estimates_Incomegroups_model_2_h2} }}%
+%    \qquad
+%%  \\
+%%        \subfloat[QMP incl. $y_{ot}$, initial $\MP$]{{\includegraphics[scale=0.5]{estimates_Incomegroups_model_6_h2} }}%
+%%    \quad
+%%    \subfloat[QMP excl. $y_{ot}$, initial $\MP$]{{\includegraphics[scale=0.5]{estimates_Incomegroups_model_3_h2} }}%
+%    \label{f: QMP across groups}%
+%\caption*{\pbox{0.7\textwidth}{\footnotesize{\textbf{Note:} Plots show the coefficient estimates and confidence intervals on the interaction term of destination per capita income, quality market potential and World Bank income groups (high income, upper middle income, lower middle income, low income). The estimating equation is equation \eqref{eq:estimating equation exp income}. The corresponding tables are deferred to the appendix.} }}   
+%\end{figure}
+
+
+
+
+
+
+%\subimport{\tablespath/figures_tables/Essay_3/}{MP_tradeflows_inc5_DW03.tex} 
+%\subimport{\tablespath/figures_tables/Essay_3/}{MP_tradeflows_inc95_DW03.tex}
+%
+%\begin{figure}[H]%
+%    \centering
+%\caption{The trade effect of quality market potential by industry}%
+%    \subfloat[Consumption goods - QMP incl. $y_{ot}$]{{\includegraphics[scale=0.5]{product_MPeffect_Cgoods_incl} }}%
+%    \quad
+%    \subfloat[Consumption goods - QMP excl. $y_{ot}$]{{\includegraphics[scale=0.5]{product_MPeffect_Cgoods_excl} }}%
+%    \qquad
+%%    \\
+%%        \subfloat[Intermediate goods - QMP incl. $y_{ot}$]{{\includegraphics[scale=0.5]{product_MPeffect_Igoods_incl} }}%
+%%    \quad
+%%    \subfloat[Intermediate goods - QMP excl. $y_{ot}$]{{\includegraphics[scale=0.5]{product_MPeffect_Igoods_excl} }}%
+%%    \qquad
+%    \label{f: QMP across goods}%
+%\caption*{\pbox{0.7\textwidth}{\footnotesize{\textbf{Note:} Plots show the average estimated effect of quality market potential across HS 2 industry within a HS Chapter heading. The estimating equation is equation \eqref{eq:estimating equation robust}, except that all coefficients are HS2 specific.} }}   
+%\end{figure}
+
+
+
+%
+
+%
+%\begin{table}[htbp]\centering
+%\caption{Regression Khandelwal (2010) quality ladder and $\MP$ effect across products \label{t: ladder prods }}
+%\scalebox{0.8}
+%{
+%\subimport{\tablespath/figures_tables/Essay_3/}{MPeffect_products_ladder_p4}
+%}
+%\end{table}
+
+\section{Conclusion}\label{s: conclusion}
+
+This paper examines whether proximity to high-income countries - referred to as quality market potential - is as important as a high domestic per capita income in shaping trade patterns when import demand is shifted by per capita income of the destination. The analysis of product-level bilateral trade flows shows that exports rise faster with destination income for countries located closer to rich countries on average. An increase in per capita income of the exporter accelerates exports to rich destinations on average only at the industry-level. This masks heterogeneity across exporters at different stages of economic development. Whereas quality market potential promotes exports to rich countries in developing countries, per capita income has a strong, positive effect in advanced economies. Proximity to rich countries fosters an increase in the number of product varieties shipped and in the quantities exported per product. The unit value of exports to rich countries from thus located countries tends to be low. Conversely, richer countries export fewer goods of lower quantity but at higher unit values as destination per capita income rises. 
+
+The results of the analysis presented in this paper point to spillover effects of regional growth in per capita income to a country's trade patterns. Strategies to promote exports should therefore factor in the geographic location of a country relative to high-income countries. The results also point to the potential of economic integration between countries of different per capita income to affect the countries' production through a change in the composition of consumer preferences. Notably developing economies could benefit here.
+
+The paper's results encourage the integration of interaction forces between importer and exporter market characteristics into models of international trade. A model featuring such interaction could help to understand the different responses to domestic and foreign consumers' preferences at the trade margins better. It could also guide empirical analysis on the unequal effects of per capita income and quality market potential over the course of development. Finally, examining sectoral heterogeneity could add to the analysis but is beyond the scope of this chapter.
+
+
+
+
+
+
+
+\newpage
+\bibliography{bibfile}
+\bibliographystyle{apalike}
+
+\newpage
+\appendix
+%\begin{subappendices}
+
+\section{Figures}
+
+\begin{figure}[H]
+\caption{Distribution of $\theta_{ot}$ estimate from auxiliary regression}
+\centering
+\includegraphics[scale=0.75]{theta_distribution_h2_h2}
+\end{figure}
+
+\section{Tables}
+\subsection{Robustness results}
+
+%\begin{landscape}
+\begin{table}[H]\centering
+\caption{Gravity equation estimation results - Clustering Robustness\label{t: gravity cluster}}
+\subimport{\tablespath/figures_tables/Essay_3/}{clusters_tradeflows_plusLinder.tex}
+\end{table}
+%\end{landscape}
+
+\begin{landscape}
+\begin{table}[H]\centering
+\caption{Gravity equation estimation results - Various robustness checks \label{t: gravity robust}}
+\subimport{\tablespath/figures_tables/Essay_3/}{robustness_nice_tradeflow_QMP.tex}
+\end{table}
+\end{landscape}
+
+
+
+%%\begin{landscape}
+%\begin{table}[htbp]\centering
+%\caption{Gravity equation estimation results - Inequality Robustness \label{t: gravity robust gini}}
+%\subimport{\tablespath/figures_tables/Essay_3/}{robustness_tradeflow_QMP.tex}
+%\end{table}
+%%\end{landscape}
+
+
+
+\subsection{Additional descriptive statistics}
+\begin{table}[H]\centering
+\caption{Correlation table between quality market potential and alternatives from the literature}\label{t: corr FQMP lit}
+\subimport{\tablespath/figures_tables/Essay_3/}{correlation_QMP_literature_h2.tex}
+\end{table}
+
+%\begin{figure}[htbp]%
+%    \centering
+%\caption{Variation in quality market potential by year}%
+%    \label{f: boxplots FQMP Reduc }%
+%\includegraphics[scale=0.8]{boxplot_lFQMP_Reduc_h2} %
+%\caption*{\pbox{0.7\textwidth}{\footnotesize{\emph{Notes:} Reduced form alternative. Quality market potential constructed using the product of GDP and inverse distance as weight. \hl{What are boxes and bars and stripes}}}}   
+%\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Auxiliary gravity regression results}
+
+\begin{table}[H]\centering
+\caption{Coefficient estimates of auxiliary regression\label{t: coeff sumstats}}
+\subimport{\tablespath/figures_tables/Essay_3/}{cf_tau_sumstats_h2.tex}
+\end{table}
+
+
+
+%%\begin{landscape}
+%\begin{table}[htbp]\centering
+%\caption{Gravity equation estimation results - Baseline (Reduced Forms) \label{t: gravity main}}
+%\subimport{\tablespath/figures_tables/Essay_3/}{FQMP_Reduc_tradeflows_main.tex}
+%\end{table}
+%%\end{landscape}
+%
+%%\begin{landscape}
+%\begin{table}[htbp]\centering
+%\caption{Gravity equation estimation results - Main regressions (Reduced Forms) \label{t: gravity plus Linder}}
+%\subimport{\tablespath/figures_tables/Essay_3/}{FQMP_Reduc_tradeflows_plusLinder.tex}
+%\end{table}
+%%\end{landscape}
+%
+%
+%
+%%\begin{landscape}
+%\begin{table}[htbp]\centering
+%\caption{Gravity equation estimation results - $\MP$ incl. exporter GDP per capita \label{t: gravity plus Linder incl}}
+%\subimport{\tablespath/figures_tables/Essay_3/}{QMP_tradeflows_plusLinder.tex}
+%\end{table}
+%%\end{landscape}
+
+%%%%\begin{table}[htbp]\centering
+%%%%\caption{Decomposition results - Foreign quality market potential effect\label{t:decomp foreign MP}}
+%%%%\scalebox{0.9}
+%%%%{
+%%%%\subimport{\tablespath/figures_tables/Essay_3/}{MPex_tradeflows_decomp_pcy_controlled}
+%%%%}
+%%%%\end{table}
+
+%%%%
+%%%%\begin{table}
+%%%%\caption{Quality market potential effect by income group (incl. exporter)}
+%%%%\label{t: Reg by group incl}
+%%%%\scalebox{0.8}
+%%%%{
+%%%%\subimport{\tablespath/figures_tables/Essay_3/}{MP_tradeflows_inc5_DW03.tex} 
+%%%%}
+%%%%\end{table}
+%%%%
+%%%%\begin{table}
+%%%%\caption{Quality market potential effect by income group (excl. exporter)}
+%%%%\label{t: Reg by group excl}
+%%%%\scalebox{0.8}
+%%%%{
+%%%%\subimport{\tablespath/figures_tables/Essay_3/}{MP_tradeflows_inc1_DW03.tex} 
+%%%%}
+%%%%\end{table}
+
+%\begin{landscape} 
+%\begin{table}[htbp]\centering
+%\caption{Determinants of unit values \label{t: unit value HCxP}}
+%\scalebox{0.9}
+%{
+%\subimport{\tablespath/figures_tables/Essay_3/}{MP_uv_HCxProd_NP_DW03}
+%}
+%\end{table}
+%\end{landscape}
+
+
+%\begin{table}[htbp]\centering
+%\caption{Summary Statistics: Market Potential effect on trade across products\label{t: sumstats across p}}
+%\scalebox{1}
+%{
+%\subimport{\tablespath/figures_tables/Essay_3/}{sumstat_product_MPeffect_DW03}
+%}
+%\end{table}
+
+\begin{table}[htbp]\centering
+\caption{Summary Statistics: $\MP$ effect on unit values across products\label{t: uv sumstats across p}}
+\scalebox{1}
+{
+\subimport{\tablespath/figures_tables/Essay_3/}{uvmargin_FQMP_sumstat_products}
+}
+\end{table}
+
+\begin{table}[htbp]\centering
+\caption{Summary Statistics: Per capita income effect on unit values across products\label{t: uv sumstats across p - GDPpc}}
+\scalebox{1}
+{
+\subimport{\tablespath/figures_tables/Essay_3/}{uvmargin_incpc_sumstat_products}
+}
+\end{table}
+%\end{subappendices}
+%\newpage
+%\subparagraph{Determinants of export quality}
+%I revisit the analysis by \cite{Lugovskyy2015} and regress (log) unit values $uv$ on the (lagged) quality market potential term. The purpose of this additional analysis is to back the results of the analysis of heterogeneous unit values in the main text. Notably, I want to show that the link between the quality market potential statistic introduced in this paper and average unit values is comparable to results in the literature.
+%
+%%Other factors influence the average quality of a country's exports, too. Distance between trade partners is positively correlated with the quality of trade flows, an observation known as the Alchian-Allen effect \citep{Hummels2004,Lugovskyy2015}. By the factor abundance mechanism, skilled-factor endowment raises the average quality of exports if the production of high-quality goods uses skilled labor intensively \citep{Dingel2017}. Further control variables include the contemporaneous exporter per capita income as well as the population in the exporting country. Destination-HS2-year fixed effects capture any destination-specific determinants of export quality such as destination per capita income and inequality. Finally, adding the count of products exported within an industry as a regressor reveals whether there is a trade-off between product quality and product variety even at the industry level (\cite{Manova2017} find the trade-off in firm data). 
+%
+%The regression equation is:
+%\begin{align}\label{eq:estimating equation uv div MP single}
+%\ln(uv_{jodt})
+%&= F_{jdt} + \gamma_{3}\ln(\tau_{od}) + \gamma_{4} \ln(pop_{ot}) +  \gamma_{5j} HC_{ot} + \delta N_{jodt} \nonumber \\
+%&+ \alpha_1\ln(\MP_{os}) + \alpha_2\ln(y_{ot}) + \nu_{3,odjt} \\
+%\text{ for } s &=\{t-1,t-5,1\} \nonumber .
+%\end{align}
+%where $F_{jdt}$ is a fixed effect, $HC_{ot}$ measures human capital\footnote{Data source: Penn World Tables.}  (interacted with product dummies such that $\gamma_{5j} \neq \gamma_{5j^\prime} $) and $pop_{ot}$ represents the exporter's population in $t$. $N$ is the count of HS 6 codes within an HS 2 code with positive exports. 
+%
+%%I calculate unit values at the HS 6-digit level and aggregate to the HS 2-digit industry level, weighting the unit values with the export share of the corresponding HS6 code: 
+%%\begin{equation}\label{eq: def unit value}
+%%uv_{jodt} = \sum_{h \in H_{odjt}} \omega^h_{odjt}\frac{x^h_{odjt}}{q^h_{odjt}} \ \ \ \ \ \text{where} \ \ \ \omega^h_{odjt} = x^h_{odjt}/X_{odjt}.
+%%\end{equation}
+%%$h$ denotes an HS6 code and $H_{odjt}$ is the set of HS6 codes with positive exports from country $o$ to destination $d$ in HS2-industry $j$ at time $t$. 
+%%Since unit values are notoriously noisy, I remove the top and bottom 5th percentile of the unit value distribution.
+%
+%Table \ref{t: unit value HCxP} presents the results. The first column shows that indeed exporting more products within an industry comes at the expense of the quality of an average product. The number of HS6 codes gets a significant and negative coefficient. The trade-off remains present in all specifications. The remaining six columns correspond to the combination of the two quality market potential definitions and the three time structures. Columns 2-4 include the exporter's own income in $\MP$. Columns 5-7 show the results when only foreign countries are included in $\MP$. The bottom three rows correspond to different adjustment periods of the production structure to a change in regional income per capita. In line with the literature, I find a positive, significant effect. Countries located closer to high-income markets export higher quality products on average. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
+
+
